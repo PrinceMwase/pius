@@ -27,6 +27,7 @@ $factory->define(User::class, function (Faker $faker) {
         'baptism_id' => 1,
         'DOB' => $faker->date(),
         'status' => 'active',
+        'phone_number' =>$faker->phoneNumber,
       
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),

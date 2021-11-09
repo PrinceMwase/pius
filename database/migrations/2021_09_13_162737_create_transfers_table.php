@@ -19,6 +19,7 @@ class CreateTransfersTable extends Migration
             $table->enum('status', ['approved', 'pending'])->default('pending');
             $table->string('document')->nullable();
             $table->string('location');
+            $table->string('reason');
             
             $table->timestamps();
         });

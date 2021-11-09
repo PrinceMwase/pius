@@ -36,7 +36,7 @@
                                 <form action="{{route('group.destroy', $group->id)}}" method="post">
                                   @csrf
                                   @method('DELETE')
-                                  <button class="btn btn-warning">Delete</button>
+                                  <button class="btn btn-warning">Disable</button>
                                 </form>
                                 </td>
                           </tr>

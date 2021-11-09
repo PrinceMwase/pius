@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\RequestTransfer;
+use App\Notifications\ApproveTransfer;
 use App\Transfer;
+use App\User;
 
 class TransferController extends Controller
 {
@@ -63,12 +65,17 @@ class TransferController extends Controller
 
 
         $request->validate([
-            'location' => "Required|string"
+            'location' => "Required|string",
+            'reason'  => ' Required|string'
         ]);
 
         auth()->user()->transfer()->save(
-            new Transfer(['location' => $request->location, 'status' => 'pending'])
+            new Transfer(['location' => $request->location, 'status' => 'pending' , 'reason' => $request->reason ])
         );
+
+        $admin = User::find(1);
+
+        Notification::send($admin , new ApproveTransfer ( auth()->user()->first_name  ) );
 
         session()->flash('status', "successfully Requested for a transfer");
 
@@ -134,6 +141,11 @@ class TransferController extends Controller
         $transfer->user->status = 'inactive';
 
         $transfer->user->save();
+
+        $user = User::find(1);
+
+        $user->notifications()->delete();
+
 
         session()->flash('status', "uploaded successfully");
 

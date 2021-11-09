@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->integer('outstation_id');
             $table->bigInteger('baptism_id');
             $table->date('DOB');
+            $table->string('phone_number');
          
             $table->enum('status', ['active', 'inactive'])->default('active');
 

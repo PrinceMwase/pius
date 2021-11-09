@@ -28,6 +28,15 @@
                                 {{-- <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email"> --}}
                             </div>
                             <div class="col-12">
+                                <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror"  id="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus placeholder="Phone Number">
+                                @error('phone_number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                {{-- <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email"> --}}
+                            </div>
+                            <div class="col-12">
                                 <select name="gender" id="gender">
                                     <option value="">- Gender -</option>
                                     <option value="male">Male</option>

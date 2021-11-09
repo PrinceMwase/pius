@@ -21,6 +21,14 @@
                 </div>
               </div>
             </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating" for="reason">Reason for Transfer</label>
+                  <input type="text" name="reason" class="form-control">
+                </div>
+              </div>
+            </div>
            
          
             <div class="row">
@@ -56,10 +64,10 @@
               <tr>
                 
                 
-              <th>name</th>
-              <th>location</th>
-              <th></th>
-              <th></th>
+              <th>Name</th>
+              <th>Location</th>
+              <th>Reason for Transfer</th>
+              <th>Action</th>
             </tr></thead>
             <tbody>
                 @foreach ($transfers as $transfer)
@@ -69,7 +77,8 @@
                         
                         <td>{{$transfer->user->first_name}} {{$transfer->user->last_name}}</td>
                         <td>{{$transfer->location}}</td>
-                        <td>upload transfer sheet</td>
+                        <td>{{$transfer->reason}}</td>
+                        
                         <td>    <a href="{{route('transfer.show', $transfer->id)}}"> approve </a>  </td>
                         <td>
                             

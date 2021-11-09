@@ -111,7 +111,7 @@ class ManageAccountsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        if(Gate::allows('manageAccount')){
+        if(!Gate::allows('manageAccount')){
              $request->validate([
             'role' => "required|integer"
             ]);
@@ -145,7 +145,9 @@ class ManageAccountsController extends Controller
     }
     public function disable($id){
 
-        $this->authorize('create', Outstation::class);
+        if (!Gate::allows('manageAcount')){
+            abort(403, 'You are not authorized to view this page');
+        }
         
         $user = User::find($id);
 

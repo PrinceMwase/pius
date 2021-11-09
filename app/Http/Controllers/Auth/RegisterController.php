@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'outstation' => ['required', 'integer', 'max:255'],
             'baptism' => ['required', 'integer', 'max:10000', 'unique:users,baptism_id'],
             'DOB' => ['Required', 'Date'],
+            'phone_number' => ['Required', 'string'],
             
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -77,7 +78,7 @@ class RegisterController extends Controller
             'outstation_id' => $data['outstation'],
             'baptism_id' => $data['baptism'],
             'DOB' => $data['DOB'],
-         
+            'phone_number' => $data['phone_number'],
             
             'password' => Hash::make($data['password']),
         ]);

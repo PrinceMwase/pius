@@ -127,7 +127,7 @@ class GroupController extends Controller
 
         $group->delete();
 
-        session()->flash('status', "Deleted Successfully");
+        session()->flash('status', "Disabled Successfully");
 
         return redirect()->route('group.index');
 
