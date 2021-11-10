@@ -11,7 +11,7 @@
 |
 */
 
-
+//added a comment
 Route::get('/', 'visitor\VisitorController@index')->name('visitorHome');
 
 Route::get('/event', 'visitor\Visitorcontroller@events');
